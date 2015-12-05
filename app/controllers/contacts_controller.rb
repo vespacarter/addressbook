@@ -1,6 +1,6 @@
 class ContactsController < ApplicationController
 	def index
-		@contacts = Contact.all
+		@contacts = Contact.all.order("name")
 	end
 
 	def new
@@ -17,5 +17,9 @@ class ContactsController < ApplicationController
     # Now we save the contact
     contact.save
     redirect_to("/contacts")
+	end
+
+	def show
+		@contact = Contact.find(params[:id])
 	end
 end
